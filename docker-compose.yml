@@ -9,7 +9,7 @@ services:
       - "env"
     volumes:
       - type: bind
-        source: "./sitedump.sql"
+        source: "./site/sitedump.sql"
         target: /docker-entrypoint-initdb.d/civicrm.sql
   redis:
     image: redis
@@ -27,6 +27,6 @@ services:
       - type: tmpfs
         target: /tmp
       - type: bind
-        source: "./files"
+        source: "./site/files"
         target: /var/www/html/sites/default/files
       

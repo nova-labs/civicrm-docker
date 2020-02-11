@@ -103,13 +103,27 @@ if (!defined('CIVICRM_UF_BASEURL')) {
  *
  * Uncomment and edit the below as appropriate.
  */
- $civicrm_setting['Directory Preferences']['uploadDir'] = '[civicrm.files]/upload' ;
- $civicrm_setting['Directory Preferences']['customFileUploadDir'] = '[civicrm.files]/custom';
- $civicrm_setting['Directory Preferences']['imageUploadDir'] = '[civicrm.files]/persist' ;
- $civicrm_setting['Directory Preferences']['extensionsDir'] = '[civicrm.root]/ext';
- $civicrm_setting['URL Preferences']['userFrameworkResourceURL'] = '[civicrm.root]';
- $civicrm_setting['URL Preferences']['imageUploadURL'] = '[civicrm.files]/persist/contribute';
- $civicrm_setting['URL Preferences']['extensionsURL'] = '[civicrm.root]/ext'
+$civicrm_setting['Directory Preferences']['uploadDir'] = '[civicrm.files]/upload' ;
+$civicrm_setting['Directory Preferences']['customFileUploadDir'] = '[civicrm.files]/custom';
+$civicrm_setting['Directory Preferences']['imageUploadDir'] = '[civicrm.files]/persist' ;
+$civicrm_setting['Directory Preferences']['extensionsDir'] = '[civicrm.root]/ext';
+$civicrm_setting['URL Preferences']['userFrameworkResourceURL'] = '[civicrm.root]';
+$civicrm_setting['URL Preferences']['imageUploadURL'] = '[civicrm.files]/persist/contribute';
+$civicrm_setting['URL Preferences']['extensionsURL'] = '[civicrm.root]/ext';
+
+$civicrm_paths['civicrm.private']['*']     = '[cms.root]/sites/default/private/civicrm';
+$civicrm_paths['civicrm.log']['*'] = '[civicrm.private]/ConfigAndLog';
+$civicrm_paths['civicrm.compile']['*'] = '/tmp';
+$civicrm_paths['civicrm.phpCache']['*']    = '/tmp';
+$civicrm_paths['civicrm.imageUpload']['*'] = '[civicrm.files]/persist/contribute';
+$civicrm_paths['civicrm.assetCache']['*']  = '[civicrm.files]/dyn';
+
+$civicrm_paths['cms.root']['path']         = '/var/www/html';
+$civicrm_paths['cms.root']['url']          = getenv('CIVICRM_UF_BASEURL');
+$civicrm_paths['civicrm.root']['*']        = '[cms.root]/sites/all/modules/civicrm';
+$civicrm_paths['civicrm.files']['*']       = '[cms.root]/sites/default/files/civicrm';
+$civicrm_paths['civicrm.extension']['*']   = '[civicrm.root]/ext';
+$civicrm_paths['civicrm.packages']['*']    = '[civicrm.root]/packages';
 
  // Override the custom templates directory.
  // $civicrm_setting['Directory Preferences']['customTemplateDir'] = '/path/to/template-dir';
@@ -200,34 +214,6 @@ if (!defined('CIVICRM_PSR16_STRICT')) {
 }
 
 /**
- * If you have multilingual site and you are using the "inherit CMS language"
- * configuration option, but wish to, for example, use fr_CA instead of the
- * default fr_FR (for French), set one or more of the constants below to an
- * appropriate regional value.
- */
-// define('CIVICRM_LANGUAGE_MAPPING_FR', 'fr_CA');
-// define('CIVICRM_LANGUAGE_MAPPING_EN', 'en_CA');
-// define('CIVICRM_LANGUAGE_MAPPING_ES', 'es_MX');
-// define('CIVICRM_LANGUAGE_MAPPING_PT', 'pt_BR');
-// define('CIVICRM_LANGUAGE_MAPPING_ZH', 'zh_TW');
-
-/**
- * Native gettext improves performance of localized CiviCRM installations
- * significantly. However, your host must enable the locale (language).
- * On most GNU/Linux, Unix or MacOSX systems, you may view them with
- * the command line by typing: "locale -a".
- *
- * On Debian or Ubuntu, you may reconfigure locales with:
- * # dpkg-reconfigure locales
- *
- * For more information:
- * http://wiki.civicrm.org/confluence/x/YABFBQ
- */
-// if (!defined('CIVICRM_GETTEXT_NATIVE')) {
-// define('CIVICRM_GETTEXT_NATIVE', 1);
-// }
-
-/**
  * Define how many times to retry a transaction when the DB hits a deadlock
  * (ie. the database is locked by another transaction). This is an
  * advanced setting intended for high-traffic databases & experienced developers/ admins.
@@ -236,19 +222,16 @@ define('CIVICRM_DEADLOCK_RETRIES', 3);
 
 /**
  * Configure MySQL to throw more errors when encountering unusual SQL expressions.
- *
- * If undefined, the value is determined automatically. For CiviCRM tarballs, it defaults
- * to FALSE; for SVN checkouts, it defaults to TRUE.
  */
-// if (!defined('CIVICRM_MYSQL_STRICT')) {
-// define('CIVICRM_MYSQL_STRICT', TRUE );
-// }
+if (!defined('CIVICRM_MYSQL_STRICT')) {
+  define('CIVICRM_MYSQL_STRICT', FALSE );
+}
 
 /**
  * Specify whether the CRM_Core_BAO_Cache should use the legacy
  * direct-to-SQL-mode or the interim PSR-16 adapter.
  */
-// define('CIVICRM_BAO_CACHE_ADAPTER', 'CRM_Core_BAO_Cache_Psr16');
+define('CIVICRM_BAO_CACHE_ADAPTER', 'CRM_Core_BAO_Cache_Psr16');
 
 if (CIVICRM_UF === 'UnitTests') {
   if (!defined('CIVICRM_CONTAINER_CACHE')) define('CIVICRM_CONTAINER_CACHE', 'auto');

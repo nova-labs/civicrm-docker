@@ -111,7 +111,7 @@ $civicrm_setting['URL Preferences']['userFrameworkResourceURL'] = '[civicrm.root
 $civicrm_setting['URL Preferences']['imageUploadURL'] = '[civicrm.files]/persist/contribute';
 $civicrm_setting['URL Preferences']['extensionsURL'] = '[civicrm.root]/ext';
 
-$civicrm_paths['civicrm.private']['*']     = '[cms.root]/sites/default/private/civicrm';
+$civicrm_paths['civicrm.private']['*']     = '[civicrm.files]';
 $civicrm_paths['civicrm.log']['*'] = '[civicrm.private]/ConfigAndLog';
 $civicrm_paths['civicrm.compile']['*'] = '/tmp';
 $civicrm_paths['civicrm.phpCache']['*']    = '/tmp';

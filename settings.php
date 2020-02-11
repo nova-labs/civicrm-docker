@@ -126,3 +126,13 @@ $conf['file_scan_ignore_directories'] = array(
   'node_modules',
   'bower_components',
 );
+
+$conf['redis_client_interface'] = 'PhpRedis';
+$conf['redis_client_host'] = getenv('DRUPAL_REDIS_HOST');
+$conf['redis_client_port'] = getenv('DRUPAL_REDIS_PORT');
+$conf['redis_client_password'] = getenv('DRUPAL_REDIS_PASSWORD');
+$conf['lock_inc'] = 'sites/all/modules/redis/redis.lock.inc';
+$conf['path_inc'] = 'sites/all/modules/redis/redis.path.inc';
+$conf['cache_backends'][] = 'sites/all/modules/redis/redis.autoload.inc';
+$conf['cache_default_class'] = 'Redis_Cache';
+$conf['cache_prefix'] = getenv('DRUPAL_REDIS_PREFIX');

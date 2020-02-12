@@ -2,8 +2,16 @@ FROM drupal:7 as builder
 
 COPY drush8.phar /usr/local/bin/drush
 COPY cv.phar /usr/local/bin/cv
+COPY civix.phar /usr/local/bin/civix
+
 RUN chmod +x /usr/local/bin/drush && \
-	chmod +x /usr/local/bin/cv
+	chmod +x /usr/local/bin/cv && \
+  chmod +x /usr/local/bin/civix
+
+ARG COMPOSER_AUTH
+ENV COMPOSER_AUTH $COMPOSER_AUTH
+ENV COMPOSER_CACHE_DIR=/tmp
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 RUN apt-get update && apt-get install -y wget git unzip zlib1g-dev libxml2-dev libcurl4-gnutls-dev libzip-dev mariadb-client
 

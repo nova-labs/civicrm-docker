@@ -48,7 +48,7 @@ RUN set -eux; \
 # https://www.drupal.org/project/redis/issues/3074189
   pear config-set temp_dir /root/tmp; \
   echo '' | pecl install -o -f redis-4.3.0; \
-  rm -rf /root/tmp  \
+  rm -rf /root/tmp; \
   docker-php-ext-enable redis; \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
@@ -88,8 +88,8 @@ ARG COMPOSER_AUTH
 ENV COMPOSER_AUTH $COMPOSER_AUTH
 ENV COMPOSER_CACHE_DIR=/tmp
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
-COPY --from=redis /usr/local/bin/redis-cli /usr/local/bin/redis-cli
-COPY --from=mariadb /usr/bin/mysql /usr/local/bin/mysql
+#COPY --from=redis /usr/local/bin/redis-cli /usr/local/bin/redis-cli
+#RUN apt-get update && apt-get install -y --no-install-recommends mysql-client
 # Don't run the web server on the cli container!
 CMD ["bash"]
 

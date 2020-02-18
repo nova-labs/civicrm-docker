@@ -47,7 +47,7 @@ services:
         - "env"
     # force this container to stay running so we can exec into it
     entrypoint: ""
-    command: /bin/true
+    command: "sleep infinity"
     volumes:
       - type: tmpfs
         target: /tmp

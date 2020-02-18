@@ -1,5 +1,5 @@
 # from https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements
-FROM php:7.3-apache-stretch AS builder
+FROM php:7.3-apache-stretch AS base
 # TODO switch to buster once https://github.com/docker-library/php/issues/865 is resolved in a clean way (either in the PHP image or in PHP itself)
 
 # install the PHP extensions we need
@@ -76,7 +76,7 @@ RUN { \
 
 WORKDIR /var/www/html
 
-FROM builder AS cli
+FROM base AS cli
 # Add various helpful tools for building/maintaining site
 COPY drush8.phar /usr/local/bin/drush
 COPY cv.phar /usr/local/bin/cv
@@ -90,3 +90,13 @@ ENV COMPOSER_CACHE_DIR=/tmp
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 COPY --from=redis /usr/local/bin/redis-cli /usr/local/bin/redis-cli
 COPY --from=mariadb /usr/bin/mysql /usr/local/bin/mysql
+# Don't run the web server on the cli container!
+CMD ["bash"]
+
+FROM base AS web
+COPY --chown=www-data:www-data \
+  webroot/ \
+  /var/www/html
+COPY --chown=www-data:www-data \
+  civimaker/ \
+  /var/www/html/sites/all/modules/civicrm/ext/org.nova-labs.civimaker

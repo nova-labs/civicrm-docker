@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<extension key="com.drastikbydesign.stripe" type="module">
+  <file>stripe</file>
+  <name>Stripe Payment Processor</name>
+  <description>Accept payments using https://stripe.com/</description>
+  <urls>
+    <url desc="Main Extension Page">https://lab.civicrm.org/extensions/stripe</url>
+    <url desc="Support">https://lab.civicrm.org/extensions/stripe/issues</url>
+    <url desc="Documentation">https://docs.civicrm.org/stripe/en/latest/</url>
+  </urls>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Matthew Wire (MJW Consulting)</author>
+    <email>mjw@mjwconsult.co.uk</email>
+  </maintainer>
+  <releaseDate>2020-01-15</releaseDate>
+  <version>6.3.1</version>
+  <develStage>stable</develStage>
+  <compatibility>
+    <ver>5.19</ver>
+  </compatibility>
+  <comments>Original Author: Joshua Walker (drastik) - Drastik by Design.
+    Jamie Mcclelland (ProgressiveTech) did a lot of the 5.x compatibility work.
+  </comments>
+  <requires>
+    <ext>mjwshared</ext>
+  </requires>
+  <civix>
+    <namespace>CRM/Stripe</namespace>
+  </civix>
+</extension>

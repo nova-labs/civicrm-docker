@@ -27,6 +27,9 @@ services:
       - type: tmpfs
         target: /tmp
       - type: bind
+        source: "./site/webroot"
+        target: /var/www/html
+      - type: bind
         source: "./site/files"
         target: /var/www/html/sites/default/files
       - type: bind

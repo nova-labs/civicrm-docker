@@ -1,0 +1,45 @@
+site_name: CiviRules
+repo_url: https://lab.civicrm.org/extensions/civirules
+theme: material
+
+pages:
+- Introduction: index.md
+- Basic Examples: 
+  - Introduction: basic-example-introduction.md
+  - Immediate Processing: basic-example-immediate-processing.md
+  - Scheduled Processing: basic-example-scheduled-processing.md
+  - Donor Classification: basic-example-donor-classification.md
+  - Field Value Comparison Condition: basic-example-field-value-comparison-condition.md
+- How to make your own:
+  - Introduction: create-your-own-introduction.md
+  - A Little More About Trigger: trigger.md
+  - Database Tables: databasetables.md  
+  - Create your own delay: create-your-own-delay.md
+  - Create your own condition: create-your-own-condition.md
+  - Create your own action: create-your-own-action.md
+  - Add logging: add-logging.md
+- Hooks:
+  - hook_civirules_alter_trigger_data: hooks/hook_civirules_alter_trigger_data.md
+  - hook_civirules_logger: hooks/hook_civirules_logger.md
+
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      guess_lang: true
+      extend_pygments_lang:
+        - name: php
+          lang: php
+          options:
+            startinline: true
+  - pymdownx.superfences:
+      css_class: codehilite
+  - pymdownx.inlinehilite:
+      css_class: codehilite
+  - pymdownx.tilde
+  - pymdownx.betterem
+  - pymdownx.mark

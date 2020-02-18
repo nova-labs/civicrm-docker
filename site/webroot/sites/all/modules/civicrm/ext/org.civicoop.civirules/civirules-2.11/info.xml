@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<extension key="org.civicoop.civirules" type="module">
+  <file>civirules</file>
+  <name>CiviRules</name>
+  <description>Native CiviCRM extension CiviRules</description>
+  <license>AGPL-3.0</license>
+<urls>
+    <url desc="Main Extension Page">https://lab.civicrm.org/extensions/civirules</url>
+    <url desc="Documentation">https://docs.civicrm.org/civirules/en/latest</url>
+    <url desc="Support">http://www.civicoop.org</url>
+    <url desc="Licensing">http://civicrm.org/licensing</url>
+</urls>
+  <maintainer>
+    <author>CiviCooP</author>
+    <email>helpdesk@civicoop.org</email>
+  </maintainer>
+  <releaseDate>2019-12-09</releaseDate>
+  <version>2.11</version>
+  <develStage>stable</develStage>
+  <compatibility>
+    <ver>4.4</ver>
+    <ver>4.6</ver>
+    <ver>4.7</ver>
+    <ver>5.0</ver>
+    <ver>5.1</ver>
+    <ver>5.2</ver>
+    <ver>5.3</ver>
+    <ver>5.4</ver>
+    <ver>5.5</ver>
+    <ver>5.6</ver>
+    <ver>5.7</ver>
+    <ver>5.8</ver>
+  </compatibility>
+  <comments>This extension is in production</comments>
+  <civix>
+    <namespace>CRM/Civirules</namespace>
+  </civix>
+</extension>

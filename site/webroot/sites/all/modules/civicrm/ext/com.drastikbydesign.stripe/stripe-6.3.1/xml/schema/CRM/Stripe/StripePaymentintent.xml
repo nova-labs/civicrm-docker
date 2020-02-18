@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<table>
+  <base>CRM/Stripe</base>
+  <class>StripePaymentintent</class>
+  <name>civicrm_stripe_paymentintent</name>
+  <comment>Stripe PaymentIntents</comment>
+  <log>true</log>
+
+  <field>
+    <name>id</name>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>Unique ID</comment>
+  </field>
+  <primaryKey>
+    <name>id</name>
+    <autoincrement>true</autoincrement>
+  </primaryKey>
+
+  <field>
+    <name>paymentintent_id</name>
+    <title>PaymentIntent ID</title>
+    <type>varchar</type>
+    <length>255</length>
+    <comment>The PaymentIntent ID</comment>
+  </field>
+  <index>
+    <name>UI_paymentintent_id</name>
+    <fieldName>paymentintent_id</fieldName>
+    <unique>true</unique>
+  </index>
+
+  <field>
+    <name>contribution_id</name>
+    <title>Contribution ID</title>
+    <type>int unsigned</type>
+    <comment>FK ID from civicrm_contribution</comment>
+  </field>
+
+  <field>
+    <name>payment_processor_id</name>
+    <title>Payment Processor</title>
+    <type>int unsigned</type>
+    <comment>Foreign key to civicrm_payment_processor.id</comment>
+    <pseudoconstant>
+      <table>civicrm_payment_processor</table>
+      <keyColumn>id</keyColumn>
+      <labelColumn>name</labelColumn>
+    </pseudoconstant>
+  </field>
+  <foreignKey>
+    <name>payment_processor_id</name>
+    <table>civicrm_payment_processor</table>
+    <key>id</key>
+    <onDelete>SET NULL</onDelete>
+  </foreignKey>
+
+  <field>
+    <name>description</name>
+    <title>Description</title>
+    <type>varchar</type>
+    <required>false</required>
+    <length>255</length>
+    <comment>Description of this paymentIntent</comment>
+  </field>
+
+  <field>
+    <name>status</name>
+    <type>varchar</type>
+    <length>25</length>
+    <required>false</required>
+    <comment>The status of the paymentIntent</comment>
+  </field>
+
+  <field>
+    <name>identifier</name>
+    <type>varchar</type>
+    <length>255</length>
+    <required>false</required>
+    <comment>An identifier that we can use in CiviCRM to find the paymentIntent if we do not have the ID (eg. session key)</comment>
+  </field>
+
+  <field>
+    <name>contact_id</name>
+    <type>int unsigned</type>
+    <comment>FK to Contact</comment>
+  </field>
+  <foreignKey>
+    <name>contact_id</name>
+    <table>civicrm_contact</table>
+    <key>id</key>
+    <onDelete>CASCADE</onDelete>
+  </foreignKey>
+
+  <field>
+    <name>created_date</name>
+    <title>Created Date</title>
+    <type>timestamp</type>
+    <default>CURRENT_TIMESTAMP</default>
+    <comment>When was paymentIntent created</comment>
+  </field>
+
+  <field>
+    <name>flags</name>
+    <type>varchar</type>
+    <length>100</length>
+    <required>false</required>
+    <comment>Flags associated with this PaymentIntent (NC=no contributionID when doPayment called)</comment>
+  </field>
+
+</table>

@@ -43,13 +43,6 @@ RUN set -eux; \
     soap \
 	; \
 	\
-# Download, build, and install the PhpRedis extension.
-# We are specifying version 4.3.0 instead of version 5 - see issue at
-# https://www.drupal.org/project/redis/issues/3074189
-  pear config-set temp_dir /root/tmp; \
-  echo '' | pecl install -o -f redis-4.3.0; \
-  rm -rf /root/tmp; \
-  docker-php-ext-enable redis; \
 # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
 	apt-mark auto '.*' > /dev/null; \
 	apt-mark manual $savedAptMark; \
@@ -63,6 +56,15 @@ RUN set -eux; \
 	\
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*
+
+# Download, build, and install the PhpRedis extension.
+# We are specifying version 4.3.0 instead of version 5 - see issue at
+# https://www.drupal.org/project/redis/issues/3074189
+  RUN set -eux; \
+    pear config-set temp_dir /root/tmp; \
+    echo '' | pecl install -o -f redis-4.3.0; \
+    rm -rf /root/tmp; \
+    docker-php-ext-enable redis;
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
@@ -88,15 +90,17 @@ ARG COMPOSER_AUTH
 ENV COMPOSER_AUTH $COMPOSER_AUTH
 ENV COMPOSER_CACHE_DIR=/tmp
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
-#COPY --from=redis /usr/local/bin/redis-cli /usr/local/bin/redis-cli
-#RUN apt-get update && apt-get install -y --no-install-recommends mysql-client
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+		mariadb-client \
+    redis-tools \
+	; \
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /var/lib/apt/lists/*
+
 # Don't run the web server on the cli container!
 CMD ["bash"]
 
 FROM base AS web
-COPY --chown=www-data:www-data \
-  webroot/ \
-  /var/www/html
-COPY --chown=www-data:www-data \
-  civimaker/ \
-  /var/www/html/sites/all/modules/civicrm/ext/org.nova-labs.civimaker
+COPY --chown=www-data:www-data webroot/ /var/www/html

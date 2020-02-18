@@ -106,10 +106,10 @@ if (!defined('CIVICRM_UF_BASEURL')) {
 $civicrm_setting['Directory Preferences']['uploadDir'] = '[civicrm.files]/upload' ;
 $civicrm_setting['Directory Preferences']['customFileUploadDir'] = '[civicrm.files]/custom';
 $civicrm_setting['Directory Preferences']['imageUploadDir'] = '[civicrm.files]/persist' ;
-$civicrm_setting['Directory Preferences']['extensionsDir'] = '[civicrm.root]/ext';
+$civicrm_setting['Directory Preferences']['extensionsDir'] = '[cms.root]/sites/default/civicrm-ext';
 $civicrm_setting['URL Preferences']['userFrameworkResourceURL'] = '[civicrm.root]';
 $civicrm_setting['URL Preferences']['imageUploadURL'] = '[civicrm.files]/persist/contribute';
-$civicrm_setting['URL Preferences']['extensionsURL'] = '[civicrm.root]/ext';
+$civicrm_setting['URL Preferences']['extensionsURL'] = '[cms.root]/sites/default/civicrm-ext';
 
 $civicrm_paths['civicrm.private']['*']     = '[civicrm.files]';
 $civicrm_paths['civicrm.log']['*'] = '[civicrm.private]/ConfigAndLog';

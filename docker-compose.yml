@@ -35,10 +35,6 @@ services:
       - type: bind
         source: "./site/files"
         target: /var/www/html/sites/default/files
-      - type: bind
-        source: "./civimaker"
-        target: /var/www/html/sites/all/modules/civicrm/ext/org.nova-labs.civimaker
-        read_only: true
   cli:
     build:
       context: .
@@ -57,6 +53,4 @@ services:
       - type: bind
         source: "./site/files"
         target: /var/www/html/sites/default/files
-      - type: bind
-        source: "./civimaker"
-        target: /var/www/html/sites/all/modules/civicrm/ext/org.nova-labs.civimaker
+        

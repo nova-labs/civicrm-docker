@@ -1,0 +1,23 @@
+[
+  {"name":"activity_add","label":"Add activity to contact","class_name":"CRM_CivirulesActions_Activity_Add"},
+  {"name":"activity_update_status","label":"Update activity status","class_name":"CRM_CivirulesActions_Activity_UpdateStatus"},
+  {"name":"set_date_field_on_case","label":"Set a Date Field on a Case","class_name":"CRM_CivirulesActions_Case_SetDateFieldOnCase"},
+  {"name":"case_add_role","label":"Set role on case","class_name":"CRM_CivirulesActions_Case_AddRole"},
+  {"name":"set_case_status","label":"Set the Status of a Case","class_name":"CRM_CivirulesActions_Case_SetStatus"},
+  {"name":"set_contact_communication_preferences","label":"Set Communication Preferences of a Contact","class_name":"CRM_CivirulesActions_Contact_SetCommPref"},
+  {"name":"set_contact_job_title","label":"Set Job Title of a Contact","class_name":"CRM_CivirulesActions_Contact_SetJobTitle"},
+  {"name":"set_contact_privacy_options","label":"Set Privacy Options of a Contact","class_name":"CRM_CivirulesActions_Contact_SetPrivacyOptions"},
+  {"name":"contact_soft_delete","label":"Soft Delete a Contact","class_name":"CRM_CivirulesActions_Contact_SoftDelete"},
+  {"name":"set_contact_sub_type","label":"Set Subtype for a Contact","class_name":"CRM_CivirulesActions_Contact_Subtype"},
+  {"name":"set_contribution_thank_date","label":"Set Thank You Date for a Contribution","class_name":"CRM_CivirulesActions_Contribution_ThankYouDate"},
+  {"name":"add_contact_group","label":"Add Contact to a Group","class_name":"CRM_CivirulesActions_GroupContact_Add"},
+  {"name":"remove_contact_group","label":"Remove Contact from a Group","class_name":"CRM_CivirulesActions_GroupContact_Remove"},
+  {"name":"add_tag_contact","label":"Add Tag to a Contact","class_name":"CRM_CivirulesActions_Tag_Add"},
+  {"name":"remove_tag_contact","label":"Remove Tag from a Contact","class_name":"CRM_CivirulesActions_Tag_Remove"},
+  {"name":"display_user_message","label":"Shows a Message to CiviCRM Users","class_name":"CRM_CivirulesActions_User_DisplayMessage"},
+  {"name":"set_contact_donor","label":"Set Contact as Donor","class_name":"CRM_CivirulesActions_CreateDonor"},
+  {"name":"participant_update_status","label":"Update Participant Status","class_name":"CRM_CivirulesActions_Participant_UpdateStatus"},
+  {"name":"Relationship_add", "label":"Add relationship", "class_name":"CRM_CivirulesActions_Relationship_Add"},
+  {"name":"membership_add","label":"Add Membership","class_name":"CRM_CivirulesActions_Membership_Add"},
+  {"name":"contribution_financial_type","label":"Set the Financial Type for a Contribution","class_name":"CRM_CivirulesActions_Contribution_FinancialType"}
+]

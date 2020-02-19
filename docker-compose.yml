@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.7"
 services:
   db:
     image: mariadb:10.4
@@ -18,7 +18,9 @@ services:
       - "6379:6379"
   web:
 #    image: docker.pkg.github.com/nova-labs/civicrm-docker/civicrm_web:dev
-    build: .
+    build:
+      context: .
+      target: web
     ports:
       - "80:80"
     env_file:
@@ -27,9 +29,28 @@ services:
       - type: tmpfs
         target: /tmp
       - type: bind
+        source: "./webroot"
+        target: /var/www/html
+        read_only: true
+      - type: bind
         source: "./site/files"
         target: /var/www/html/sites/default/files
+  cli:
+    build:
+      context: .
+      target: cli
+    env_file:
+        - "env"
+    # force this container to stay running so we can exec into it
+    entrypoint: ""
+    command: "sleep infinity"
+    volumes:
+      - type: tmpfs
+        target: /tmp
       - type: bind
-        source: "./civimaker"
-        target: /var/www/html/sites/all/modules/civicrm/ext/org.nova-labs.civimaker
-      
+        source: "./webroot"
+        target: /var/www/html
+      - type: bind
+        source: "./site/files"
+        target: /var/www/html/sites/default/files
+        

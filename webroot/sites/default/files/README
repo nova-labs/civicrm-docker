@@ -1,0 +1,2 @@
+The real site files directory will be bind mounted over this one.
+So don't put anything in this directory.

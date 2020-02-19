@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/stripe/fix-webhook</path>
+    <page_callback>CRM_Stripe_Form_UpdateWebhook</page_callback>
+    <title>Check and Fix Stripe Webhooks</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/stripe/confirm-payment</path>
+    <page_callback>CRM_Stripe_AJAX::confirmPayment</page_callback>
+    <title>Client Secret</title>
+    <access_callback>1</access_callback>
+  </item>
+  <item>
+    <path>civicrm/admin/setting/stripe</path>
+    <title>Stripe Settings</title>
+    <page_callback>CRM_Admin_Form_Generic</page_callback>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>

@@ -4,3 +4,4 @@ site/files/js/*
 site/files/civicrm/upload/*
 site/files/civicrm/persist/dyn/*
 site/files/civicrm/persist/contribute/dyn/*
+site/files/civicrm/ConfigAndLog/*

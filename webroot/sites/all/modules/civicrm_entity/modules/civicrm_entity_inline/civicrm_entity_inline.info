@@ -1,0 +1,15 @@
+name = Inline CiviCRM Entity
+description = Provides Inline Entity Form integration with CiviCRM Entities
+core = 7.x
+package = CiviCRM Entity
+version = 1.0
+dependencies[] = civicrm_entity
+dependencies[] = inline_entity_form
+files[] = includes/civicrm.civicrm_entity_inline.inc
+
+
+; Information added by Drupal.org packaging script on 2018-12-03
+version = "7.x-2.2"
+core = "7.x"
+project = "civicrm_entity"
+datestamp = "1543856285"
